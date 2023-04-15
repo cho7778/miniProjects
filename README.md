@@ -66,11 +66,15 @@
 ### **3.4 HTML태그 선택하기**
 
 ```
+// querySelector('')와 querySelectorAll('')의 차이점
+
 document.querySelector('div'); : div 중에서 제일 첫번째만 선택됨
 document.querySelectorAll('div'); div 모든 태그가 선택됨
 ```
 
 ```
+// 선택자 사용하여 해당 태그 선택하기
+
 태그로 선택하기 : document.querySelector('div span');
 아이디로 선택하기: document.querySelector('#id(아이디명)');
 클래스로 선택하기: document.querySelector('.class(클래스명)');
@@ -91,6 +95,21 @@ document.querySelectorAll('div'); div 모든 태그가 선택됨
 ```
 
 ### **3.6 첫 단어를 입력한 사람인지 판단하기**
+
+```
+// textContent의 사용
+
+태그.textContent // 태그 내부의 문자열을 가져옴
+태그.textContent = 값 // 태그 내부의 문자열을 해당 값으로 설정함
+```
+
+```
+// 태그 내부의 문자열을 읽어오고 설정할 수 있는 프로퍼티
+
+ - 태그.innerHTML: 해당 태그의 HTML, XMLdmf 읽어오거나 설정할 수 있음(태그까지 모두 출력됨)
+ - 태그.innerText: 사용자에게 보여지는 텍스트 값을 읽어옴(display:none은 출력되지 않음)
+ - 태그.textContent: 해당 Node가 가지고 있는 텍스트 값을 그대로 읽어옴(display:none까지 출력됨)
+```
 
 ### **3.7 올바른 단어인지 판단하기**
 

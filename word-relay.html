@@ -14,24 +14,28 @@
     <button>버튼2</button>
     <button>버튼3</button>
     <script>
-        // 1. 몇 명이 참가할지 선택한다.
-        const number = prompt('몇 명이 참가하나요?');
-        // console.log('number', number, typeof number);
-
-        const realNumber = Number(number);
-        // console.log(typeof realNumber);
-
-        // 2. input, button에 EventListener 연결하기
-        const onClickButton = () => {
-            console.log('button click');
-        }
+        const number = Number(prompt('몇 명이 참가하나요?'));
         const $button = document.querySelector('button');
-        $button.addEventListener('click', onClickButton);
-
-        const onInput = (event) => {
-            console.log('글자 입력', event.target.value);
-        }
         const $input = document.querySelector('input');
+        const $word = document.querySelector('#word');
+        let word; // 제시어
+        let newWorld; // 현재 단어
+
+        const onClickButton = () => {
+            if(!word) {// 제시어가 비어있는가?
+                word = newWord; // 입력한 단어가 제시어가 된다.
+                $word.textContent = word; // 화면에 제시어 표시
+                // 비어있다
+            } else {
+                // 비어있지 않다.
+            }
+        };
+        
+        const onInput = (event) => {
+            newWord = event.target.value;
+        }
+
+        $button.addEventListener('click', onClickButton);
         $input.addEventListener('input', onInput);
         
 
