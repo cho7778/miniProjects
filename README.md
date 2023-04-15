@@ -59,13 +59,26 @@
 
 ### **3.3 값 입력받아 변수에 저장하기**
 
-- prompt 함수: 사용자로부터 값을 전달받아 문자열로 받는다.
-- alert 함수: 사용자에게 경고 메시지를 전달한다.
-- confirm 함수: 사용자의 확인을 요구하여 true/false값을 반환한다.
+- prompt(''): 사용자로부터 값을 전달받아 문자열로 받는다.
+- alert(''): 사용자에게 경고 메시지를 전달한다.
+- confirm(''): 사용자의 확인을 요구하여 true/false값을 반환한다.
 
 ### **3.4 HTML태그 선택하기**
 
-### **3.6 찻 딘어를 입력한 사람인지 판단하기**
+```
+document.querySelector('div'); : div 중에서 제일 첫번째만 선택됨
+document.querySelectorAll('div'); div 모든 태그가 선택됨
+```
+
+```
+태그로 선택하기 : document.querySelector('div span');
+아이디로 선택하기: document.querySelector('#id(아이디명)');
+클래스로 선택하기: document.querySelector('.class(클래스명)');
+```
+
+### **3.5 태그에 이벤트 달기**
+
+### **3.6 첫 단어를 입력한 사람인지 판단하기**
 
 ### **3.7 올바른 단어인지 판단하기**
 

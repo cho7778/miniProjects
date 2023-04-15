@@ -11,14 +11,23 @@
     <div>제시어: <span id="word"></span></div>
     <input type="text">
     <button>입력</button>
+    <button>버튼2</button>
+    <button>버튼3</button>
     <script>
+        // 1. 몇 명이 참가할지 선택한다.
         const number = prompt('몇 명이 참가하나요?');
         // console.log('number', number, typeof number);
 
         const realNumber = Number(number);
         // console.log(typeof realNumber);
 
-        
+        //
+        const $$button = document.querySelectorAll('button');
+        console.log($$button);
+
+
+
+
 
 
     </script>
