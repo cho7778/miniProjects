@@ -78,6 +78,18 @@ document.querySelectorAll('div'); div 모든 태그가 선택됨
 
 ### **3.5 태그에 이벤트 달기**
 
+- 이벤트: 사용자와 태그가 상호작용 (click, keyup, ...)
+- 이벤트 리스너: 이벤트 발생이 자바스크립트가 직접 감지하지 못함. 그래서 자바스크림트가 HTML에서 발생하는 이벤트를 감지할 수 있게 해줌
+- 콜백 함수: 특정 작업이 실행되고 난 뒤에 실행되는 함수
+
+```html
+<script>
+  document.qurySelector("button").addEventListener("click", () => {
+    console.log("버튼 클릭");
+  });
+</script>
+```
+
 ### **3.6 첫 단어를 입력한 사람인지 판단하기**
 
 ### **3.7 올바른 단어인지 판단하기**

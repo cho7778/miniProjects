@@ -21,9 +21,26 @@
         const realNumber = Number(number);
         // console.log(typeof realNumber);
 
-        //
-        const $$button = document.querySelectorAll('button');
-        console.log($$button);
+        // 2. input, button에 EventListener 연결하기
+        const onClickButton = () => {
+            console.log('button click');
+        }
+        const $button = document.querySelector('button');
+        $button.addEventListener('click', onClickButton);
+
+        const onInput = (event) => {
+            console.log('글자 입력', event.target.value);
+        }
+        const $input = document.querySelector('input');
+        $input.addEventListener('input', onInput);
+        
+
+
+
+
+
+
+
 
 
 
