@@ -18,16 +18,32 @@
         const $button = document.querySelector('button');
         const $input = document.querySelector('input');
         const $word = document.querySelector('#word');
+        const $order = document.querySelector('#order');
         let word; // 제시어
-        let newWorld; // 현재 단어
+        let newWord; // 현재 단어
 
         const onClickButton = () => {
             if(!word) {// 제시어가 비어있는가?
                 word = newWord; // 입력한 단어가 제시어가 된다.
                 $word.textContent = word; // 화면에 제시어 표시
-                // 비어있다
-            } else {
-                // 비어있지 않다.
+                const order = Number($order.textContent);
+                if(order + 1 > number) {
+                    $order.textContent = 1;
+                } else {
+                    $order.textContent = order + 1;
+                }
+
+            } else {// 비어있지 않다.
+                if(word[word.length-1] === newWord[0]) {// 입력한 단어의 끝자리가 현재 제시어의 첫글자와 같은가?
+                    // 맞다면
+                    word = newWord; // 현재 단어를 제시어에 저장한다.
+                    $word.textContent = word; // 화면에 제시어 표시한다.
+                    const order = Number($order.textContent);
+                    if(order + 1 > number) {
+                        $order.textContent = 1;
+                    } else {
+                        $order.textContent = order + 1;
+                    }
             }
         };
         
