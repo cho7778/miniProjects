@@ -3,11 +3,17 @@
 ## 3. DOM 객체 다루기\_ 끝말잇기 게임
 
 ```
+시작
 1. 몇명이 참가할지 선택한다.
 2. 참가자 순서를 정한다.
+
+스타트
 3. 첫번째 사람이 제시어를 말한다.
-4. 다음사람이 단어를 말한다.
-5. 단어가 올바르면 다음사람이 단어를 말하고, 틀렸다면 틀렸다고 표시한다.
+4. if문을 통해서 제시어가 첫번째 시작 제시어인지 판단한다
+ - 시작하는 제시어라면 제시어에 할당한다.
+5. if문을 통해서 제시어가 있다면 제시어의 마지막 글자와 인풋값의 첫 글자가 같아야 다음 상대에게 순서를 넘긴다.
+6. 틀렸을 때는 틀렸음을 표시하고, 맞으면 다음 사람이 단어를 말한다.
+
 ```
 
 <br>
@@ -59,9 +65,9 @@
 
 ### **3.3 값 입력받아 변수에 저장하기**
 
-- prompt(''): 사용자로부터 값을 전달받아 문자열로 받는다.
-- alert(''): 사용자에게 경고 메시지를 전달한다.
-- confirm(''): 사용자의 확인을 요구하여 true/false값을 반환한다.
+- prompt(''): 사용자로부터 값을 전달받아 문자열로 받는다. 입력하지 않고 취소하면 null이 전달된다.
+- alert(''): 단순한 알림창으로, 호출하면 확인을 누르기 전까지 다음 스크립트 실행이 중단됩니다. 디버깅 용도로 사용할 때는 console.log를 사용한다.
+- confirm(''): 사용자의 확인을 요구하여 확인을 누르면 true, 취소를 누르면 false값을 반환한다.
 
 ### **3.4 HTML태그 선택하기**
 
@@ -88,9 +94,9 @@ document.querySelectorAll('div'); div 모든 태그가 선택됨
 
 ```html
 <script>
-  document.qurySelector("button").addEventListener("click", () => {
-    console.log("버튼 클릭");
-  });
+  document
+    .querySelector("선택자")
+    .addEventListener("이벤트 이름", "리스너 함수");
 </script>
 ```
 
@@ -113,13 +119,37 @@ document.querySelectorAll('div'); div 모든 태그가 선택됨
 
 ### **3.7 올바른 단어인지 판단하기**
 
+```
 문자열
 
-- 특정 문자 선택하기: 문자열[자잇수]
+- 특정 문자 선택하기: 문자열[자랏수]
 - 문자열의 길이: 문자열.length
+```
 
 ### **3.8 틀렸을 때 오류 표시하기**
 
+```
+// 태그 내용 수정시
+ - 일반적으로 .textContent를 사용
+ - 입력 태그(input, select, textarea)는 .value 사용
+```
+
 ### **3.9 순서도 최적화하기**
+
+```
+논리 연산자
+
+논리합(&&)연산자 (모두가 참이여야만 true/ 아니면 false)
+ - true && true = true (**)
+ - true && false = false
+ - false && true = false
+ - false && false = false
+
+논리곱(||)연산자(모두가 거짓이여만 false / 아니면 true)
+ - true && true = true
+ - true && false = true
+ - false && true = true
+ - false && false = false (**)
+```
 
 ---
