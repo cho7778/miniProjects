@@ -67,34 +67,46 @@
       const $operator = document.querySelector("#operator");
       const $result = document.querySelector("#result");
 
-      document.querySelector("#num-0").addEventListener("click", () => {
+      const onClickNumber = (number) => {
         if (operator) {
-          numTwo += "0";
+          numTwo += event.target.textContent;
         } else {
-          numOne += "0";
+          numOne += event.target.textContent;
         }
-        $result.value += "0";
-      });
-      document.querySelector("#num-1").addEventListener("click", () => {
-        if (operator) {
-          numTwo += "1";
+        $result.value += event.target.textContent;
+      };
+      document.querySelector("#num-0").addEventListener("click", onClickNumber);
+      document.querySelector("#num-1").addEventListener("click", onClickNumber);
+      document.querySelector("#num-2").addEventListener("click", onClickNumber);
+      document.querySelector("#num-3").addEventListener("click", onClickNumber);
+      document.querySelector("#num-4").addEventListener("click", onClickNumber);
+      document.querySelector("#num-5").addEventListener("click", onClickNumber);
+      document.querySelector("#num-6").addEventListener("click", onClickNumber);
+      document.querySelector("#num-7").addEventListener("click", onClickNumber);
+      document.querySelector("#num-8").addEventListener("click", onClickNumber);
+      document.querySelector("#num-9").addEventListener("click", onClickNumber);
+
+      const onClickOpertator = (op) => () => {
+        if (numOne) {
+          operator = op;
+          $operator.value = op;
         } else {
-          numOne += "1";
+          alert("숫자를 먼저 입력하세요");
         }
-        $result.value += "1";
-      });
-      document.querySelector("#num-2").addEventListener("click", () => {});
-      document.querySelector("#num-3").addEventListener("click", () => {});
-      document.querySelector("#num-4").addEventListener("click", () => {});
-      document.querySelector("#num-5").addEventListener("click", () => {});
-      document.querySelector("#num-6").addEventListener("click", () => {});
-      document.querySelector("#num-7").addEventListener("click", () => {});
-      document.querySelector("#num-8").addEventListener("click", () => {});
-      document.querySelector("#num-9").addEventListener("click", () => {});
-      document.querySelector("#plus").addEventListener("click", () => {});
-      document.querySelector("#minus").addEventListener("click", () => {});
-      document.querySelector("#multiply").addEventListener("click", () => {});
-      document.querySelector("#divide").addEventListener("click", () => {});
+      };
+      document
+        .querySelector("#plus")
+        .addEventListener("click", onClickOpertator("+"));
+      document
+        .querySelector("#minus")
+        .addEventListener("click", onClickOpertator("-"));
+      document
+        .querySelector("#multiply")
+        .addEventListener("click", onClickOpertator("*"));
+      document
+        .querySelector("#divide")
+        .addEventListener("click", onClickOpertator("/"));
+
       document.querySelector("#calculate").addEventListener("click", () => {});
       document.querySelector("#clear").addEventListener("click", () => {});
     </script>
