@@ -72,15 +72,14 @@
           numOne += event.target.textContent;
           $result.value += event.target.textContent;
           return;
-        } else {
-          //이 아래로는 operator가 존재하는 경우에만 실행됨
-          if (!numTwo) {
-            $result.value = "";
-          }
-          numTwo += event.target.textContent;
-          $result.value += event.target.textContent;
         }
+        if (!numTwo) {
+          $result.value = "";
+        }
+        numTwo += event.target.textContent;
+        $result.value += event.target.textContent;
       };
+
       document.querySelector("#num-0").addEventListener("click", onClickNumber);
       document.querySelector("#num-1").addEventListener("click", onClickNumber);
       document.querySelector("#num-2").addEventListener("click", onClickNumber);
@@ -100,6 +99,7 @@
           alert("숫자를 먼저 입력하세요");
         }
       };
+
       document
         .querySelector("#plus")
         .addEventListener("click", onClickOpertator("+"));
@@ -135,7 +135,14 @@
           alert("숫자를 먼저 입력하세요.");
         }
       });
-      document.querySelector("#clear").addEventListener("click", () => {});
+
+      document.querySelector("#clear").addEventListener("click", () => {
+        numOne = "";
+        operator = "";
+        numTwo = "";
+        $operator.value = "";
+        $result = "";
+      });
     </script>
   </body>
 </html>
