@@ -8,12 +8,17 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <table id="table"></table>
-    <div id="score">0</div>
+    <main class="content">
+      <h1 class="title">2048 게임</h1>
+      <button class="btn-restart" id="restart">다시하기</button>
+      <table id="table"></table>
+      <div id="score">0</div>
+    </main>
     <!-- JS -->
     <script>
       const $table = document.getElementById("table");
       const $score = document.getElementById("score");
+      const $restart = document.getElementById("restart");
       let data = [];
 
       function startGame() {
@@ -66,12 +71,12 @@
 
       startGame();
 
-      data = [
-        [0, 2, 4, 2],
-        [0, 0, 1024, 0],
-        [2, 1024, 2, 2],
-        [0, 16, 0, 4],
-      ];
+      //   data = [
+      //     [0, 2, 4, 2],
+      //     [0, 0, 1024, 0],
+      //     [2, 1024, 2, 2],
+      //     [0, 16, 0, 4],
+      //   ];
       draw();
 
       function moveCells(direction) {
@@ -224,6 +229,22 @@
         } else if (diffY < 0 && Math.abs(diffX) <= Math.abs(diffY)) {
           moveCells("up");
         }
+      });
+
+      $restart.addEventListener("click", () => {
+        const responseRestart = confirm("다시 시작하시겠습니까?");
+        if (!responseRestart) return;
+
+        data = [];
+        const $score = document.getElementById("score");
+        $score.textContent = 0;
+
+        let element = document.getElementById("table");
+        while (element.firstChild) {
+          element.removeChild(element.firstChild);
+        }
+
+        startGame();
       });
     </script>
   </body>
