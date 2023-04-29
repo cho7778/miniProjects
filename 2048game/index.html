@@ -84,6 +84,9 @@
                   const currentRow = newData[i];
                   const prevData = currentRow[currentRow.length - 1];
                   if (prevData === cellData) {
+                    const score = parseInt($score.textContent);
+                    $score.textContent =
+                      score + currentRow[currentRow.length - 1] * 2;
                     currentRow[currentRow.length - 1] *= -2;
                   } else {
                     newData[i].push(cellData);
@@ -107,6 +110,9 @@
                   const currentRow = newData[i];
                   const prevData = currentRow[currentRow.length - 1];
                   if (prevData === rowData[3 - j]) {
+                    const score = parseInt($score.textContent);
+                    $score.textContent =
+                      score + currentRow[currentRow.length - 1] * 2;
                     currentRow[currentRow.length - 1] *= -2;
                   } else {
                     newData[i].push(rowData[3 - j]);
@@ -130,6 +136,9 @@
                   const currentRow = newData[i];
                   const prevData = currentRow[currentRow.length - 1];
                   if (prevData === cellData) {
+                    const score = parseInt($score.textContent);
+                    $score.textContent =
+                      score + currentRow[currentRow.length - 1] * 2;
                     currentRow[currentRow.length - 1] *= 2;
                   } else {
                     newData[j].push(cellData);
@@ -153,6 +162,9 @@
                   const currentRow = newData[j];
                   const prevData = currentRow[currentRow.length - 1];
                   if (prevData === data[3 - i][j]) {
+                    const score = parseInt($score.textContent);
+                    $score.textContent =
+                      score + currentRow[currentRow.length - 1] * 2;
                     currentRow[currentRow.length - 1] *= -2;
                   } else {
                     newData[j].push(data[3 - i][j]);
@@ -176,7 +188,7 @@
             alert("축하합니다. 2048을 만드셨네요!");
           }, 0);
         } else if (!data.flat().includes(0)) {
-          alert("다시 한번 시도해보세요...!");
+          alert(`다시 한번 시도해보세요...! ${$score.textContent}점`);
         } else {
           put2ToRandomCell();
           draw();
