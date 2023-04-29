@@ -11,8 +11,8 @@
     <main class="content">
       <h1 class="title">2048 게임</h1>
       <button class="btn-restart" id="restart">다시하기</button>
+      <div>점수: <span id="score">0</span></div>
       <table id="table"></table>
-      <div id="score">0</div>
     </main>
     <!-- JS -->
     <script>
@@ -236,7 +236,6 @@
         if (!responseRestart) return;
 
         data = [];
-        const $score = document.getElementById("score");
         $score.textContent = 0;
 
         let element = document.getElementById("table");
