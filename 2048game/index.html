@@ -68,8 +68,8 @@
 
       data = [
         [0, 2, 4, 2],
-        [0, 0, 8, 0],
-        [2, 2, 2, 2],
+        [0, 0, 1024, 0],
+        [2, 1024, 2, 2],
         [0, 16, 0, 4],
       ];
       draw();
@@ -170,8 +170,17 @@
             break;
           }
         }
-        put2ToRandomCell();
-        draw();
+        if (data.flat().includes(2048)) {
+          draw();
+          setTimeout(() => {
+            alert("축하합니다. 2048을 만드셨네요!");
+          }, 0);
+        } else if (!data.flat().includes(0)) {
+          alert("다시 한번 시도해보세요...!");
+        } else {
+          put2ToRandomCell();
+          draw();
+        }
       }
 
       window.addEventListener("keyup", (e) => {
