@@ -30,7 +30,6 @@
           [1, 2, 3, 4].forEach(() => {
             rowData.push(0);
             const $td = document.createElement("td");
-            // $tr.textContent = "";
             $tr.appendChild($td);
           });
           $fragment.appendChild($tr);
@@ -49,6 +48,7 @@
             }
           });
         });
+
         const randomCell =
           emptyCells[Math.floor(Math.random() * emptyCells.length)];
         data[randomCell[0]][randomCell[1]] = 2;
@@ -71,14 +71,6 @@
 
       startGame();
 
-      //   data = [
-      //     [0, 2, 4, 2],
-      //     [0, 0, 1024, 0],
-      //     [2, 1024, 2, 2],
-      //     [0, 16, 0, 4],
-      //   ];
-      draw();
-
       function moveCells(direction) {
         switch (direction) {
           case "left": {
@@ -88,7 +80,6 @@
                 if (cellData) {
                   const currentRow = newData[i];
                   const prevData = currentRow[currentRow.length - 1];
-                  if (prevData === cellData) {
                     const score = parseInt($score.textContent);
                     $score.textContent =
                       score + currentRow[currentRow.length - 1] * 2;
@@ -102,7 +93,7 @@
             console.log(newData);
             [1, 2, 3, 4].forEach((rowData, i) => {
               [1, 2, 3, 4].forEach((cellData, j) => {
-                data[i][j] = newData[i][j] || 0;
+                data[i][j] = Math.abs(newData[i][j]) || 0;
               });
             });
             break;
@@ -138,13 +129,13 @@
             data.forEach((rowData, i) => {
               rowData.forEach((cellData, j) => {
                 if (cellData) {
-                  const currentRow = newData[i];
+                  const currentRow = newData[j];
                   const prevData = currentRow[currentRow.length - 1];
                   if (prevData === cellData) {
                     const score = parseInt($score.textContent);
                     $score.textContent =
                       score + currentRow[currentRow.length - 1] * 2;
-                    currentRow[currentRow.length - 1] *= 2;
+                    currentRow[currentRow.length - 1] *= -2;
                   } else {
                     newData[j].push(cellData);
                   }
@@ -154,7 +145,7 @@
             console.log(newData);
             [1, 2, 3, 4].forEach((cellData, i) => {
               [1, 2, 3, 4].forEach((rowData, j) => {
-                data[i][j] = Math.abs(newData[i][j]) || 0;
+                data[j][i] = Math.abs(newData[i][j]) || 0;
               });
             });
             break;
@@ -177,7 +168,6 @@
                 }
               });
             });
-
             console.log(newData);
             [1, 2, 3, 4].forEach((cellData, i) => {
               [1, 2, 3, 4].forEach((rowData, j) => {
@@ -188,11 +178,13 @@
           }
         }
         if (data.flat().includes(2048)) {
+          // 승리
           draw();
           setTimeout(() => {
             alert("축하합니다. 2048을 만드셨네요!");
           }, 0);
         } else if (!data.flat().includes(0)) {
+          // 빈 칸이 없으면 패배
           alert(`다시 한번 시도해보세요...! ${$score.textContent}점`);
         } else {
           put2ToRandomCell();
@@ -200,24 +192,24 @@
         }
       }
 
-      window.addEventListener("keyup", (e) => {
-        if (e.key == "ArrowUp") {
+      window.addEventListener("keyup", (event) => {
+        if (event.key === "ArrowUp") {
           moveCells("up");
-        } else if (e.key === "ArrowDown") {
+        } else if (event.key === "ArrowDown") {
           moveCells("down");
-        } else if (e.key === "ArrowLeft") {
+        } else if (event.key === "ArrowLeft") {
           moveCells("left");
-        } else if (e.key === "ArrowRight") {
+        } else if (event.key === "ArrowRight") {
           moveCells("right");
         }
       });
 
       let startCoord;
-      window.addEventListener("mousedown", (e) => {
-        startCoord = [e.clientX, event.clientY];
+      window.addEventListener("mousedown", (event) => {
+        startCoord = [event.clientX, event.clientY];
       });
-      window.addEventListener("mouseup", (e) => {
-        const endCoord = [e.clientX, e.clientY];
+      window.addEventListener("mouseup", (event) => {
+        const endCoord = [event.clientX, event.clientY];
         const diffX = endCoord[0] - startCoord[0];
         const diffY = endCoord[1] - startCoord[1];
         if (diffX < 0 && Math.abs(diffX) > Math.abs(diffY)) {
