@@ -69,8 +69,6 @@
         });
       }
 
-      startGame();
-
       function moveCells(direction) {
         switch (direction) {
           case "left": {
@@ -84,6 +82,7 @@
                     const score = parseInt($score.textContent);
                     $score.textContent =
                       score + currentRow[currentRow.length - 1] * 2;
+                    // 2-2-4-8일 경우, 4-4-8인데 코드를 작성하지 않으면 16으로 나오게 됨
                     currentRow[currentRow.length - 1] *= -2;
                   } else {
                     newData[i].push(cellData);
@@ -192,6 +191,8 @@
           draw();
         }
       }
+
+      startGame();
 
       window.addEventListener("keyup", (event) => {
         if (event.key === "ArrowUp") {
