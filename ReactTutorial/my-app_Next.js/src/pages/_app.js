@@ -5,5 +5,5 @@ export default function App({ Component, pageProps }) {
 }
 
 export default function Square() {
-  return <button className="square"></button>;
+  return <button className="square">X</button>;
 }
